@@ -1,23 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import Functions from './components/functions/Functions';
+import HigherOrderFunctions from './components/functions/HigherOrderFunctions';
+import PureFunctions from './components/functions/PureFunctions';
+import StructuralSharing from './components/functions/StructuralSharing';
+import { store } from './redux/store';
 
 function App() {
+  console.log(store)
+  // store is an object
+  // if you want to know the state of a store then use getState() method
+  store.subscribe(() =>{
+    console.log('store changed!',store.getState())
+  }) 
+  store.dispatch({
+     type:'ITEM_ADD',
+     payload : {
+       description:'item1'
+     }
+   });
+   
+  console.log(store.getState())
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+ {/* <Functions/> */}
+ {/* <HigherOrderFunctions/> */}
+ {/* <PureFunctions/> */}
+ {/* <StructuralSharing/> */}
+ 
     </div>
   );
 }
